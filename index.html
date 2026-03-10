@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosticería Los Gavilanes</title>
+    <meta name="description"
+        content="Rosticería Los Gavilanes — tu local de confianza para pollo rostizado, piernas de pavo, pescuesos, tortillas y refrescos en Nextlalpan.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e11d48;
+            /* Red for food/chicken */
+            --primary-hover: #be123c;
+            --dark: #1f2937;
+            --light: #fffbeb;
+            /* Warm yellow tint for background */
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 550px;
+            background-image: url('rosticeria_real_bg.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.7), rgba(153, 27, 27, 0.4));
+        }
+
+        .glass-card {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transform: translateY(40px);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(40px);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #fef08a;
+            color: #854d0e;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d97706;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        p.description {
+            font-size: 1.2rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(225, 29, 72, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(225, 29, 72, 0.4);
+        }
+
+        .content-section {
+            padding: 100px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .content-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 20px;
+            }
+
+            .glass-card {
+                transform: translateY(0);
+                padding: 40px 24px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            @keyframes slideUp {
+                to {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid transparent;
+        }
+
+        .info-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary);
+        }
+
+        .info-icon {
+            background: #ffe4e6;
+            color: #be123c;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.8rem;
+        }
+
+        .info-item:nth-child(2) .info-icon {
+            background: #ffedd5;
+            color: #c2410c;
+        }
+
+        .info-item:nth-child(3) .info-icon {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .info-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            color: #111827;
+        }
+
+        .info-text p {
+            color: #6b7280;
+            line-height: 1.5;
+            font-size: 1.1rem;
+        }
+
+        .map-wrapper {
+            position: relative;
+            padding: 10px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 500px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: contrast(1.05) saturate(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: contrast(1.1) saturate(1.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+            font-size: 1rem;
+            margin-top: auto;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .products-section {
+            background: linear-gradient(135deg, #fff1f2, #fff7ed);
+            padding: 80px 20px;
+            border-top: 1px solid #fecdd3;
+        }
+
+        .products-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .products-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 4px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-bottom-color: var(--primary);
+        }
+
+        .product-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="glass-card">
+            <span class="badge">Especialidad en Pollo</span>
+            <h1>Los Gavilanes</h1>
+            <div class="rating">
+                ⭐⭐⭐⭐ 4.3 (80 reseñas)
+            </div>
+            <p class="description">
+                Rosticería &quot;Los Gavilanes&quot;
+            </p>
+            <a href="https://maps.app.goo.gl/VkP6N3KNesrVycSb7" target="_blank" class="cta-button"
+                rel="noopener noreferrer">
+                🍗 Ver Menú & Pedir en Maps
+            </a>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-text">
+                    <h3>Ubicación</h3>
+                    <p>Av. Juárez, Central, 55790<br>Santa Ana Nextlalpan, Méx.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🛵</div>
+                <div class="info-text">
+                    <h3>Nuestros Servicios</h3>
+                    <p>Contamos con entrega a domicilio sin complicaciones y servicio de comida para llevar. ¡Rápido y
+                        caliente!</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="map-wrapper">
+            <div class="map-container">
+                <iframe
+                    src="https://maps.google.com/maps?q=Rosticería+Los+Gavilanes,+Av.+Juárez,+Central,+Nextlalpan&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen="" loading="lazy" title="Ubicación de Rosticería Los Gavilanes">
+                </iframe>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sección de productos -->
+    <section class="products-section">
+        <div class="products-inner">
+            <h2 class="products-title">🛒 Nuestros Productos</h2>
+            <p class="products-subtitle">Todo lo que encuentras en nuestro local</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-emoji">🍗</div>
+                    <h3>Pollo Rostizado</h3>
+                    <p>Entero, medio o por pieza. Jugoso y dorado al punto.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-emoji">🦃</div>
+                    <h3>Piernas de Pavo</h3>
+                    <p>Grandes, sabrosas y perfectas para compartir en familia.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-emoji">🍖</div>
+                    <h3>Pescuesos</h3>
+                    <p>Una delicia rostizada, ideal para botanear o acompañar.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-emoji">🫓</div>
+                    <h3>Tortillas</h3>
+                    <p>Frescas y hechas al momento, el complemento perfecto.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-emoji">🥤</div>
+                    <h3>Refrescos</h3>
+                    <p>Variedad de bebidas frías para acompañar tu compra.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-emoji">➕</div>
+                    <h3>Y mucho más</h3>
+                    <p>Pregunta por nuestras promociones y productos del día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Rosticería Los Gavilanes</div>
+        &copy; 2026 Todos los derechos reservados. Diseño de demostración.
+    </footer>
+
+</body>
+
+</html>
